@@ -27,7 +27,10 @@ public class Club {
 
     public Club() {
     }
-
+    
+    
+    
+    
     public String getIdClub() {
         return IdClub;
     }
@@ -108,6 +111,18 @@ public class Club {
     return this.IdClub +" "+ valorFormateado.format(this.valorSuscripcion);
     }
     
+    public void concatenadorDeColores(String color){
+        if (!this.colores.isEmpty()){
+            this.colores= this.colores + "; ";
+        }
+        this.colores= this.colores + color;
+    }
+    
+    public void cambioDeNombreEquipo(){
+        
+        
+        
+    }
     
     
 }

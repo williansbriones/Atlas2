@@ -1,7 +1,9 @@
 
 package com.duocuc.atlas2.MTO;
 
+import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.util.Locale;
 
 public class Suscripcion {
     private int idSuscripcion;
@@ -32,8 +34,11 @@ public class Suscripcion {
         this.idSuscripcion = Folio;
     }
 
-    public int getValorTotal() {
-        return ValorTotal;
+    public String getValorTotal() {
+        Locale locale = new Locale ("es", "CL");
+        NumberFormat formateado = NumberFormat.getInstance (locale);
+        String ValorFormateado = formateado.format(this.ValorTotal);
+        return ValorFormateado;
     }
 
     public void setValorTotal(int ValorTotal) {
@@ -65,6 +70,7 @@ public class Suscripcion {
     }
     
     public void agregarEquipos(Club cl){
+        this.ValorTotal= this.ValorTotal+cl.getValorSuscripcion();
         if(!this.Equipos.isEmpty()){
         this.Equipos += "; ";
         }

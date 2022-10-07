@@ -4,7 +4,7 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 
-public class Cliente {
+public class Cliente{
     private int IdUsuario;
     private String Nombre;
     private int rut;
@@ -14,6 +14,7 @@ public class Cliente {
     private String Email;
     private String NombreUsuario;
     private String Contraseña;
+    private String ContraseñaTemporal;
 
     public Cliente(int IdUsuario, String Nombre, int rut, String Dv, LocalDate FechaNacimiento, String Telefono, String Email, String NombreUsuario, String Contraseña) {
         this.IdUsuario = IdUsuario;
@@ -26,7 +27,7 @@ public class Cliente {
         this.NombreUsuario = NombreUsuario;
         this.Contraseña = Contraseña;
     }
-
+    
     public Cliente() {
     }
 
@@ -125,6 +126,41 @@ public class Cliente {
         }
     }
 
+    public String getContraseñaTemporal() {
+        return ContraseñaTemporal;
+    }
+
+    public void setContraseñaTemporal(String Contraseña) {
+        
+        boolean EsMayuscula = false;
+        boolean EsCaracter = false;
+        boolean EsNumero = false;
+        boolean EsMinuscula = false;
+        for(int i=0; i < Contraseña.length(); i++){
+           char c = Contraseña.charAt(i);
+           if (Character.isUpperCase(c)){
+               EsMayuscula  = true;
+           }else if(Character.isDigit(c)){
+               EsNumero  = true;
+           
+            }else if (Character.isLowerCase(c)){
+                EsMinuscula = true;
+            
+            }else{
+                EsCaracter = true; 
+            }  
+        }
+        if (EsCaracter && EsNumero && EsMinuscula && EsMayuscula){
+        this.ContraseñaTemporal = Contraseña;
+        }else{
+            System.out.println("La contraseña no es valida");
+        }
+        
+        
+    }
+    
+    
+    
     public String getContraseña() {
         return Contraseña;
     }
@@ -172,7 +208,17 @@ public class Cliente {
         } catch (java.lang.NumberFormatException e) {
         } catch (Exception e) {
         }
-        return validacion;
+        return validacion;    
     }
     
+     public void validadorDeUsuarios(String NombreUsuario, String Contraseña){
+        
+        if ((Contraseña.equals(this.Contraseña) && NombreUsuario.equals(this.NombreUsuario))||(Contraseña.equals(this.ContraseñaTemporal) && NombreUsuario.equals(this.NombreUsuario))){
+        
+            System.out.println("Usuario correcto");
+        }else{
+        
+            System.out.println("Usuario incorrecto ");
+        }
+     }
 }

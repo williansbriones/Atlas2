@@ -12,11 +12,14 @@ public class ATLAS2 {
     public static void main(String[] args) {
         Club club1 = new Club();
         
+        club1.setColores("");
+        club1.concatenadorDeColores("Rojo");
+        club1.concatenadorDeColores("Azul");        
         club1.setNombreClub("hanball");
         club1.setIdClub("hah");
         club1.setValorSuscripcion(10000);
         System.out.println(club1.getIdClub());
-        
+        System.out.println(club1.getColores());
         Club club2 = new Club();
         
         club2.setNombreClub("fotball");
@@ -34,6 +37,7 @@ public class ATLAS2 {
         sus1.setIdSuscripcion();
         System.out.println(sus1.getIdSuscripcion());
         System.out.println(sus1.getEquipos());
+        System.out.println(sus1.getValorTotal());
         
         Cliente cli1 = new Cliente();
         cli1.setNombreUsuario("Chilli");
@@ -41,7 +45,8 @@ public class ATLAS2 {
         cli1.setFechaNacimiento("19/07/2001");
         cli1.setEmail("kfjalfkdj@gmail.cl");
         cli1.setRut(20811954,'0');
-        
+        cli1.validadorDeUsuarios("Chilli", "holaMun3d#o");
+        cli1.setContraseñaTemporal("llaL5#");
         
        
         
